@@ -1,16 +1,25 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {Home, Screen, Page} from './Components/Home'
+import { render } from 'react-dom';
+import Home from './Components/Home'
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
 
-console.log(Home, Screen, Page) //, Screen );
+const store = configureStore();
 
-const App = () => (
-        <div>
-            <Home name={"michael"} surname={"Comes"} />
-           <Screen name={"John"} surname={"Locke"} /> 
-           <Page name={"Sam"} surname={"Locke"} /> 
-        </div>    
-)
+// const App = (data) => (
+//         <div>
+//             <Home name={"name"} surname={"Comes"} />
+//            <Screen name={"John"} surname={"Locke"} /> 
+//            <Page name={"Sam"} surname={"Locke"} /> 
+//         </div>    
+// )
 
 
-ReactDOM.render(<App />, document.getElementById("index"));
+
+
+render(
+<Provider store={store}>
+   <Home /> 
+</Provider>,
+
+document.getElementById("index"));

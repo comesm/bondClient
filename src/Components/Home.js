@@ -1,25 +1,32 @@
 import style from './Home.css'
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'; 
+import * as stuffActions from '../actions/stuffActions';
 
-const Home = ({ name, surname }) => 
-    (<div className={style.intro}>Hello React {name} {surname}</div>);
+class Home extends Component {
 
-const Screen = ({ name, surname }) => 
- (<div className={style.intro}>Hello React {name} {surname}</div>);
-
-const Page = ({ name, surname }) => 
- (<div className={style.intro}>Hello React {name} {surname}</div>);
-
-
- export {Screen, Page, Home}
+componentDidMount() {
+    console.log(11, this.props);
+}
 
 
+    render() {
+        return (<div>Hello world</div>)
+    }
+}
 
-//export default Home;
 
+function mapStateToProps({ stuff }) {
+    return {
+        stuff
+    };
+   // stuff: stuff
+}
 
-//const Greeting = 
-
-//toshi
-
+function mapDispatchToProps(dispatch) {
+  return {
+      stuffActions: bindActionCreators(stuffActions, dispatch)
+  }
+}
