@@ -7,13 +7,31 @@ import * as stuffActions from '../actions/stuffActions';
 
 class Home extends Component {
 
-componentDidMount() {
-    console.log(11, this.props);
+constructor(props) {
+    super(props);
+    this.state = {
+        isLoaded: false
+    }
 }
 
 
+componentDidMount() {
+    console.log(12, this.props);
+    this.props.stuffActions.fetchStuff();  
+}
+
+renderName() {
+    if(this.props.stuff.length > 0) {
+        console.log(this.props.stuff);
+        return (<li>{this.props.stuff[0].name}</li>)
+    }
+}
+
     render() {
-        return (<div>Hello world</div>)
+        console.log(21, this.props);
+        return (<div>
+            {this.renderName()}
+        </div>)
     }
 }
 
@@ -30,3 +48,5 @@ function mapDispatchToProps(dispatch) {
       stuffActions: bindActionCreators(stuffActions, dispatch)
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

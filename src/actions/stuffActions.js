@@ -16,16 +16,22 @@ export function fetchStuff() {
     return async (dispatch) => {
      
     try {
-      let response =await fetch('https://jsonplaceholder.typicode.com/users')
-      let jsonResponse = response.json();
-      let data = jsonResponse.data;    
+      console.log(20, 'inside try');
+      let response = await fetch('https://jsonplaceholder.typicode.com/users', {
+          method: 'GET',
+          headers: {
+              Accept: 'application/json'
+          }
+      })
+      let jsonResponse = await response.json();
+      
       if(response.status === 200) {
-        dispatch(receiveStuff(data));
+        dispatch(receiveStuff(jsonResponse));
       } else {
-        dispatch(errorFetch(data)); 
+        dispatch(errorFetch(jsonResponse)); 
       }     
     } catch(e) {
-        dispatch(unhandledError(data));      
+        dispatch(unhandledError({msg: e}));      
     }
   }     
 }

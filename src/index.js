@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import Home from './Components/Home'
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
-
+require("babel-polyfill");
 const store = configureStore();
 
 // const App = (data) => (
