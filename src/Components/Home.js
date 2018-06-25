@@ -16,7 +16,6 @@ constructor(props) {
 
 
 componentDidMount() {
-    console.log(12, this.props);
     this.props.stuffActions.fetchStuff();  
 }
 

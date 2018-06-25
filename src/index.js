@@ -1,10 +1,20 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Home from './Components/Home'
+import Home from './Components/Home';
+import Login from './Components/Login';
 import { Provider } from 'react-redux';
-import configureStore from './store/configureStore';
+import { configureStore, history } from './store/configureStore';
+import { startListener } from './middleware/listener';
+
+
 require("babel-polyfill");
+
+
 const store = configureStore();
+
+console.log(15, store, history);
+
+startListener(history, store);
 
 // const App = (data) => (
 //         <div>
@@ -14,12 +24,15 @@ const store = configureStore();
 //         </div>    
 // )
 
+const Root = ({ store }) => (
+   <Provider store={store}>
+    <Home />
+   </Provider>           
+)
 
 
 
 render(
-<Provider store={store}>
-   <Home /> 
-</Provider>,
+<Root store={store} />,
 
 document.getElementById("index"));

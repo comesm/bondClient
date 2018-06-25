@@ -1,4 +1,4 @@
-import  initialState from './initialState';
+import  { initialState } from './initialState';
 import {UNHANDLED_ERROR, FETCH_STUFF, RECEIVE_STUFF, RECEIVE_ERROR} from '../actions/actionTypes';
 
 export default function stuffReducer(state = initialState.stuff, action) {
