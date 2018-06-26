@@ -2,6 +2,7 @@ import {PUSH, REPLACE, GO, GO_BACK, GO_FORWARD} from '../actions/routingActionTy
 
 export const routerMiddleware = (history) => () => (next) =>
   (action) => {
+    console.log(5, "HISTORY: ", history, " NEZT: ", next, " ACITON: ", action);
     switch (action.type) {
           case PUSH:
             history.push(action.payload);

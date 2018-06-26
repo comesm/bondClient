@@ -1,8 +1,9 @@
 import PUSH from './routingActionTypes';
-import  REPLACE from './routingActionTypes';
-import  GO from './routingActionTypes';
-import  GO_BACK from './routingActionTypes';
-import  GO_FORWARD from './routingActionTypes';
+import REPLACE from './routingActionTypes';
+import GO from './routingActionTypes';
+import GO_BACK from './routingActionTypes';
+import GO_FORWARD from './routingActionTypes';
+import LOCATION_CHANGE from './routingActionTypes';
  
 
 export const push = (href) => ({

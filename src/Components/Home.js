@@ -16,20 +16,22 @@ constructor(props) {
 
 
 componentDidMount() {
-    this.props.stuffActions.fetchStuff();  
+    console.log(19, this.props);
+   // this.props.stuffActions.fetchStuff();  
 }
 
 renderName() {
+    console.log(23, this.props.stuff);
     if(this.props.stuff.length > 0) {
-        console.log(this.props.stuff);
-        return (<li>{this.props.stuff[0].name}</li>)
+        console.log(24, this.props.stuff);
+        return (<li>HELLO HOME</li>)
     }
 }
 
     render() {
         console.log(21, this.props);
         return (<div>
-            {this.renderName()}
+            HELLO HOME
         </div>)
     }
 }

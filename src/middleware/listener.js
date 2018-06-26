@@ -1,5 +1,6 @@
+import { locationChange } from '../actions/routingActions';
+
 export function startListener(history, store) {
-    console.log(2, history);
     store.dispatch(locationChange({
         pathname: history.location.pathname,
         search: history.location.search,
@@ -7,6 +8,7 @@ export function startListener(history, store) {
     }));       
 
     history.listen((location) => {
+    console.log(11, location);
     store.dispatch(locationChange({
         pathname: location.pathname,
         search: location.search,
