@@ -5,14 +5,12 @@ import Login from './Components/Login';
 import { Provider } from 'react-redux';
 import { configureStore, history } from './store/configureStore';
 import { startListener } from './middleware/listener';
-
+import { push } from './actions/routingActions';
 
 require("babel-polyfill");
 
 
 const store = configureStore();
-
-console.log(15, store, history);
 
 startListener(history, store);
 
@@ -23,6 +21,14 @@ startListener(history, store);
 //            <Page name={"Sam"} surname={"Locke"} /> 
 //         </div>    
 // )
+let currentLocation = store.getState();
+
+let unsubscribe = store.subscribe(() => {
+    let previousLocation = currentLocation;
+    currentLocation = store.getState();
+})
+
+store.dispatch(push('/about'));
 
 const Root = ({ store }) => (
    <Provider store={store}>

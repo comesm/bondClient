@@ -1,6 +1,7 @@
 import { initialRouteState } from './initialState';
+import { LOCATION_CHANGE } from '../actions/routingActionTypes';
 
-export const routerReducer = (state = initialRouteState, action) => {
+export default function routerReducer(state = initialRouteState, action) {
    switch(action.type) {
     case LOCATION_CHANGE: 
       return {

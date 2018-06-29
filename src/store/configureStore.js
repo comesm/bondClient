@@ -4,20 +4,16 @@ import routerReducer from '../reducers/routerReducer';
 import thunk from 'redux-thunk';
 import { routerMiddleware } from '../middleware/middleware';
 import { createBrowserHistory } from 'history';
-//import { startListener } from '../middleware/listener';
-
-
-const rootReducer = combineReducers({
-  stuff: stuffReducer,
-  router: routerReducer
-});
 
 export const history = createBrowserHistory();
 
 const middleware = routerMiddleware(history);
-//console.log(18, startListener);
-//startListener(history, store);
 
+const rootReducer = combineReducers({
+  router: routerReducer,
+  stuff: stuffReducer
+  
+});
 
 
 export function configureStore() {
