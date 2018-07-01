@@ -1,7 +1,10 @@
 const loaderUtils = require('loader-utils');
 
-function asyncRequire(page, chunk)
+function asyncRequire(page, chunk) {
+    console.log(4);
+    console.log('hello!~~~~~~~~');
+}
 
+console.log('hello ~~~~~~~~~~~~');
 
-
-module.expors = routeLoader;
+module.exports = routeLoader;
