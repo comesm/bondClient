@@ -1,12 +1,6 @@
-//import memoryfs from 'memory-fs';
-
-//import path from 'path';
-
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const path = require('path');
-
-const memoryfs = require('memory-fs');
 
 const htmlPlugin = new HtmlWebPackPlugin({
   template: "./src/index.html",
@@ -23,9 +17,6 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
-          options: {
-            presets: ["es2015", {"modules": false}, "react"]
-          }
         }
       },
       {
@@ -56,13 +47,6 @@ module.exports = {
         include: routes,
         loader: path.resolve(__dirname,'./src/utils/route-loader.js')
       },
-      {
-        test: /\.txt$/,
-        loader: path.resolve(__dirname, './src/utils/loader.js'),
-        options: {
-          name: "John"
-        }
-      }
     ]
   },
   plugins: [htmlPlugin],

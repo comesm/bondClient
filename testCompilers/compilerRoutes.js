@@ -2,30 +2,37 @@ import path from 'path';
 import webpack from 'webpack';
 import memoryfs from 'memory-fs';
 
+
+
 export default (fixture, options = {}) => {
+  console.log(8, fixture);
+  const routes = path.resolve(__dirname, '../src/routes/routes.json');
   const compiler = webpack({
       context: __dirname,
-      entry: `./${fixture}`,
+      entry: `${fixture}`,
       output: {
           path: path.resolve(__dirname),
-          filename: 'bundle.js'
+          filename: 'bundleRoutes.js'
       },
       module: {
           rules: [{
-              test: /\.txt$/,
+              test: /\.json$/,
+              include: routes,
               use: {
-                  loader: path.resolve(__dirname, '../src/utils/loader.js'),
-                  options: {
-                      name: 'Alice'
-                  }
+                  loader: path.resolve(__dirname, '../src/utils/route-loader.js'),
+               options: {
+                   debug: true,
+                   chunks: true
+               }
               }
           }]
       }
   });
-  compiler.outputFileSystem = new memoryfs();
+  //compiler.outputFileSystem = new memoryfs();
 
   return new Promise((resolve, reject) => {
       compiler.run((err, stats) => {
+          //console.log(31, err, stats);
           if(err || stats.hasErrors()) reject(err);
 
           resolve(stats);

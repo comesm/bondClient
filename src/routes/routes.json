@@ -1,0 +1,12 @@
+[
+    {
+      "path": "/",
+      "page": "../Components/Home",
+      "chunk": "main"
+    },
+    {
+      "path": "/login",
+      "page": "../Components/Login",
+      "chunk": "main"
+    }
+  ]
