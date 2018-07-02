@@ -73,7 +73,7 @@ function routeLoader(source) {
   if (options.debug) {
     console.log(`\nredux-json-router/route-loader\noptions: ${JSON.stringify(options, null, 2)}\noutput: ${module}`); // eslint-disable-line no-console
   }
-
+  console.log(76, '~~~~~~~', module);
   return module;
 }
 

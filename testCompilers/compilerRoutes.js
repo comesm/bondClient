@@ -15,7 +15,13 @@ export default (fixture, options = {}) => {
           filename: 'bundleRoutes.js'
       },
       module: {
-          rules: [{
+          rules: [
+            {
+                test: /\.json$/,
+                exclude: routes, // exclude routes.json from being loaded by the usual json-loader
+                loader: 'json-loader',
+            },
+            {
               test: /\.json$/,
               include: routes,
               use: {
@@ -25,14 +31,15 @@ export default (fixture, options = {}) => {
                    chunks: true
                }
               }
-          }]
+          }        
+        ]
       }
   });
   //compiler.outputFileSystem = new memoryfs();
 
   return new Promise((resolve, reject) => {
       compiler.run((err, stats) => {
-          //console.log(31, err, stats);
+          console.log(31, stats);
           if(err || stats.hasErrors()) reject(err);
 
           resolve(stats);

@@ -39,14 +39,20 @@ module.exports = {
       },
       {
         test: /\.json$/,
-        exclude: routes,
-        loader: 'json-loader'
-      },
-      {
-        test: /\.json$/,
-        include: routes,
-        loader: path.resolve(__dirname,'./src/utils/route-loader.js')
-      },
+        exclude: routes, // exclude routes.json from being loaded by the usual json-loader
+        loader: 'json-loader',
+    },
+    {
+      test: /\.json$/,
+      include: routes,
+      use: {
+          loader: path.resolve(__dirname, './src/utils/route-loader.js'),
+       options: {
+           debug: true,
+           chunks: true
+       }
+      }
+  }
     ]
   },
   plugins: [htmlPlugin],
