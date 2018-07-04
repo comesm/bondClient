@@ -9,7 +9,7 @@ export default (fixture, options = {}) => {
   const routes = path.resolve(__dirname, '../src/routes/routes.json');
   const compiler = webpack({
       context: __dirname,
-      entry: `${fixture}`,
+      entry: `./${fixture}`,
       output: {
           path: path.resolve(__dirname),
           filename: 'bundleRoutes.js'
@@ -20,6 +20,7 @@ export default (fixture, options = {}) => {
                 test: /\.json$/,
                 exclude: routes, // exclude routes.json from being loaded by the usual json-loader
                 loader: 'json-loader',
+                type: "javascript/auto"
             },
             {
               test: /\.json$/,
@@ -27,7 +28,7 @@ export default (fixture, options = {}) => {
               use: {
                   loader: path.resolve(__dirname, '../src/utils/route-loader.js'),
                options: {
-                   debug: true,
+                   debug: false,
                    chunks: true
                }
               }

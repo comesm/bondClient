@@ -1,0 +1,22 @@
+[
+  {
+    "path": "/",
+    "page": "./pages/Home",
+    "chunk": "main"
+  },
+  {
+    "path": "/docs",
+    "page": "./pages/Docs",
+    "chunk": "main",
+    "children": [
+      {
+        "path": "/:id",
+        "page": "./pages/Post"
+      }
+    ]
+  },
+  {
+    "path": "*", 
+    "page": "./pages/Error"
+  }
+]

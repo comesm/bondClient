@@ -47,18 +47,18 @@ function transform(route, shouldChunk) {
  * Transforms an array of route objects into JavaScript.
  */
 function routeLoader(source) {
-  
+  //console.log(50, source);
   // get options from webpack config
-  console.log(52, 'before options !!!!!!');
+  //console.log(52, 'before options !!!!!!');
 
   const options = {
     debug: loaderUtils.getOptions(this).debug || false, // defaults to false;
     chunks: loaderUtils.getOptions(this).chunks !== false, // defaults to true
   };
-
+  //console.log(58, source);
   // parse JSON
   const routes = JSON.parse(source);
-
+  //console.log(61);
   // stringify transformed JavaScript
   const output = ['['];
   for (const route of routes) { // eslint-disable-line no-restricted-syntax
@@ -68,12 +68,12 @@ function routeLoader(source) {
 
   // create the final export value
   const module = `export default ${output.join('')}`;
-
+  //console.log(71, module);
   // print to console if debug enabled
   if (options.debug) {
     console.log(`\nredux-json-router/route-loader\noptions: ${JSON.stringify(options, null, 2)}\noutput: ${module}`); // eslint-disable-line no-console
   }
-  console.log(76, '~~~~~~~', module);
+  //console.log(76);
   return module;
 }
 
